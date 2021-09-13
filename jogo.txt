@@ -1,0 +1,663 @@
+define sysLastKey $ff
+define sysRandom    $fe
+define ASCII_a $61
+define ASCII_e $65
+define ASCII_i $69
+define ASCII_o $6f
+define ASCII_u $75
+define ASCII_c $63
+igorvargasp77
+
+letra_A:
+LDA #$01
+STA $308 ;parte de cima
+STA $309
+STA $30A
+STA $30B
+STA $30C
+STA $30D
+STA $30E
+STA $30F
+STA $310
+STA $311
+STA $312
+STA $313
+STA $314
+STA $315 
+STA $328 ; lateral esquerda
+STA $348
+STA $368
+STA $388
+STA $3A8
+STA $3C8
+STA $3E8
+STA $408
+STA $428
+STA $448
+STA $468
+STA $488
+STA $335 ; lateral direita
+STA $355
+STA $375
+STA $395
+STA $3B5
+STA $3D5
+STA $3F5
+STA $415
+STA $435
+STA $455
+STA $475
+STA $495
+STA $3C9 ; parte do meio
+STA $3CA
+STA $3CB
+STA $3CC
+STA $3CD
+STA $3CE
+STA $3CF
+STA $3D0
+STA $3D1
+STA $3D2
+STA $3D3
+STA $3D4
+jsr comp
+
+comp:
+LDA sysLastKey
+STA $03   
+CMP #ASCII_a
+BEQ volta_vitoria
+LDA sysLastKey
+STA $03
+CMP #ASCII_c ;A letra C reseta
+BNE volta_Derrota
+
+ganhou:
+jsr comp
+volta_vitoria:
+LDA #$00
+STA $200
+JSR apaga_A
+
+result:
+jsr comp
+volta_Derrota:
+LDA #$00
+JSR letra_A
+
+apaga_A:
+LDA #$00
+STA $308 ;parte de cima
+STA $309
+STA $30A
+STA $30B
+STA $30C
+STA $30D
+STA $30E
+STA $30F
+STA $310
+STA $311
+STA $312
+STA $313
+STA $314
+STA $315 
+STA $328 ; lateral esquerda
+STA $348
+STA $368
+STA $388
+STA $3A8
+STA $3C8
+STA $3E8
+STA $408
+STA $428
+STA $448
+STA $468
+STA $488
+STA $335 ; lateral direita
+STA $355
+STA $375
+STA $395
+STA $3B5
+STA $3D5
+STA $3F5
+STA $415
+STA $435
+STA $455
+STA $475
+STA $495
+STA $3C9 ; parte do meio
+STA $3CA
+STA $3CB
+STA $3CC
+STA $3CD
+STA $3CE
+STA $3CF
+STA $3D0
+STA $3D1
+STA $3D2
+STA $3D3
+STA $3D4
+JSR letra_E
+
+letra_E:
+LDX #$05
+STX $308 ;parte de cima
+STX $309
+STX $30A
+STX $30B
+STX $30C
+STX $30D
+STX $30E
+STX $30F
+STX $310
+STX $311
+STX $312
+STX $313
+STX $314
+STX $315 
+STX $328 ; lateral esquerda
+STX $348
+STX $368
+STX $388
+STX $3A8
+STX $3C8
+STX $3E8
+STX $408
+STX $428
+STX $448
+STX $468
+STX $488
+STX $3C9 ; parte do meio
+STX $3CA
+STX $3CB
+STX $3CC
+STX $3CD
+STX $3CE
+STX $3CF
+STX $3D0
+STX $3D1
+STX $3D2
+STX $3D3
+STX $3D4
+STX $3D5
+STX $489 ; parte de baixo
+STX $48A
+STX $48B
+STX $48C
+STX $48D
+STX $48E
+STX $48F
+STX $490
+STX $491
+STX $492
+STX $493
+STX $494
+STX $495
+Jmp comp2
+
+comp2:
+LDA sysLastKey
+STA $03
+CMP #ASCII_e
+BEQ volta_vitoria2
+LDA sysLastKey 
+STA $03  
+CMP #ASCII_c ;compara com a letra c de continuar
+BEQ volta_Derrota2
+
+gaho2:
+jsr comp2
+volta_vitoria2:
+LDA #$00
+STA $200
+JSR apaga_E
+
+result2:
+jsr comp2
+volta_Derrota2:
+LDA #$00
+STA $489
+STA $48A
+STA $48B
+STA $48C
+STA $48D
+STA $48E
+STA $48F
+STA $490
+STA $491
+STA $492
+STA $493
+STA $494
+STA $495
+JSR letra_A
+
+apaga_E:
+LDX #$00
+STX $308 ;parte de cima
+STX $309
+STX $30A
+STX $30B
+STX $30C
+STX $30D
+STX $30E
+STX $30F
+STX $310
+STX $311
+STX $312
+STX $313
+STX $314
+STX $315 
+STX $328 ; lateral esquerda
+STX $348
+STX $368
+STX $388
+STX $3A8
+STX $3C8
+STX $3E8
+STX $408
+STX $428
+STX $448
+STX $468
+STX $488
+STX $3C9 ; parte do meio
+STX $3CA
+STX $3CB
+STX $3CC
+STX $3CD
+STX $3CE
+STX $3CF
+STX $3D0
+STX $3D1
+STX $3D2
+STX $3D3
+STX $3D4
+STX $3D5
+STX $489 ; parte de baixo
+STX $48A
+STX $48B
+STX $48C
+STX $48D
+STX $48E
+STX $48F
+STX $490
+STX $491
+STX $492
+STX $493
+STX $494
+STX $495
+jsr letra_I
+
+letra_I:
+LDX #$07
+STX $32F
+STX $3AF
+STX $3CF
+STX $3EF
+STX $40F
+STX $42F
+STX $44F
+STX $46F
+STX $48F
+JMP comp3
+
+comp3:
+LDA sysLastKey
+STA $03
+CMP #ASCII_i
+BEQ volta_vitoria3
+LDA sysLastKey 
+STA $03  
+CMP #ASCII_c ;compara com a letra c de continuar
+BEQ volta_Derrota3
+
+gaho3:
+jsr comp3
+volta_vitoria3:
+LDA #$00
+STA $200
+JSR apaga_I
+
+result3:
+jsr comp3
+volta_Derrota3:
+LDX #$00
+STX $32F
+STX $3AF
+STX $3CF
+STX $3EF
+STX $40F
+STX $42F
+STX $44F
+STX $46F
+STX $48F
+JSR letra_A
+
+apaga_I:
+LDX #$00
+STX $32F
+STX $3AF
+STX $3CF
+STX $3EF
+STX $40F
+STX $42F
+STX $44F
+STX $46F
+STX $48F
+JSR letra_O
+
+letra_O:
+LDA #$08
+STA $308 ;parte de cima
+STA $309
+STA $30A
+STA $30B
+STA $30C
+STA $30D
+STA $30E
+STA $30F
+STA $310
+STA $311
+STA $312
+STA $313
+STA $314
+STA $315 
+STA $328 ; lateral esquerda
+STA $348
+STA $368
+STA $388
+STA $3A8
+STA $3C8
+STA $3E8
+STA $408
+STA $428
+STA $448
+STA $468
+STA $488
+STA $335 ; lateral direita
+STA $355
+STA $375
+STA $395
+STA $3B5
+STA $3D5
+STA $3F5
+STA $415
+STA $435
+STA $455
+STA $475
+STA $495
+STA $489
+STA $48A
+STA $48B
+STA $48C
+STA $48D
+STA $48E
+STA $48F
+STA $490
+STA $491
+STA $492
+STA $493
+STA $494
+JMP comp4
+
+comp4:
+LDA sysLastKey
+STA $03
+CMP #ASCII_o
+BEQ volta_vitoria4
+LDA sysLastKey 
+STA $03  
+CMP #ASCII_c ;compara com a letra c de continuar
+BEQ volta_Derrota4
+
+gaho4:
+jsr comp4
+volta_vitoria4:
+LDA #$00
+STA $200
+JSR apaga_O
+
+result4:
+jsr comp4
+volta_Derrota4:
+LDA #$00
+STA $489
+STA $48A
+STA $48B
+STA $48C
+STA $48D
+STA $48E
+STA $48F
+STA $490
+STA $491
+STA $492
+STA $493
+STA $494
+JSR letra_A
+
+apaga_O:
+LDA #$00
+STA $308 ;parte de cima
+STA $309
+STA $30A
+STA $30B
+STA $30C
+STA $30D
+STA $30E
+STA $30F
+STA $310
+STA $311
+STA $312
+STA $313
+STA $314
+STA $315 
+STA $328 ; lateral esquerda
+STA $348
+STA $368
+STA $388
+STA $3A8
+STA $3C8
+STA $3E8
+STA $408
+STA $428
+STA $448
+STA $468
+STA $488
+STA $335 ; lateral direita
+STA $355
+STA $375
+STA $395
+STA $3B5
+STA $3D5
+STA $3F5
+STA $415
+STA $435
+STA $455
+STA $475
+STA $495
+STA $489
+STA $48A
+STA $48B
+STA $48C
+STA $48D
+STA $48E
+STA $48F
+STA $490
+STA $491
+STA $492
+STA $493
+STA $494
+JSR letra_U
+
+letra_U:
+LDA #$02
+STA $308
+STA $315 
+STA $328 ; lateral esquerda
+STA $348
+STA $368
+STA $388
+STA $3A8
+STA $3C8
+STA $3E8
+STA $408
+STA $428
+STA $448
+STA $468
+STA $488
+STA $335 ; lateral direita
+STA $355
+STA $375
+STA $395
+STA $3B5
+STA $3D5
+STA $3F5
+STA $415
+STA $435
+STA $455
+STA $475
+STA $495
+STA $489
+STA $48A
+STA $48B
+STA $48C
+STA $48D
+STA $48E
+STA $48F
+STA $490
+STA $491
+STA $492
+STA $493
+STA $494
+JMP comp5
+
+comp5:
+LDA sysLastKey
+STA $03
+CMP #ASCII_u
+BEQ volta_vitoria5
+LDA sysLastKey 
+STA $03  
+CMP #ASCII_c ;compara com a letra c de continuar
+BEQ volta_Derrota5
+
+gaho5:
+jsr comp5
+volta_vitoria5:
+LDA #$00
+STA $200
+JSR apaga_U
+
+result5:
+jsr comp5
+volta_Derrota5:
+LDA #$00
+STA $489
+STA $48A
+STA $48B
+STA $48C
+STA $48D
+STA $48E
+STA $48F
+STA $490
+STA $491
+STA $492
+STA $493
+STA $494
+JSR letra_A
+
+apaga_U:
+LDA #$00
+STA $308
+STA $315 
+STA $328 ; lateral esquerda
+STA $348
+STA $368
+STA $388
+STA $3A8
+STA $3C8
+STA $3E8
+STA $408
+STA $428
+STA $448
+STA $468
+STA $488
+STA $335 ; lateral direita
+STA $355
+STA $375
+STA $395
+STA $3B5
+STA $3D5
+STA $3F5
+STA $415
+STA $435
+STA $455
+STA $475
+STA $495
+STA $489
+STA $48A
+STA $48B
+STA $48C
+STA $48D
+STA $48E
+STA $48F
+STA $490
+STA $491
+STA $492
+STA $493
+STA $494
+JMP vitoria
+
+
+
+
+
+vitoria:
+
+LDA #$01
+STA $3C6
+STA $3E6
+STA $407
+STA $427
+STA $447
+STA $468
+STA $488
+STA $449
+STA $429
+STA $409
+STA $48A
+STA $46A
+STA $44B
+STA $42B
+STA $40B
+STA $3CC
+STA $40B
+STA $3EC ;w
+
+STA $3EE
+STA $40E
+STA $42E
+STA $44E
+STA $46E
+STA $48E
+STA $42E
+
+STA $3D0
+STA $3F0
+STA $3F1
+STA $3F4
+STA $410
+STA $411
+STA $414
+STA $430
+STA $432
+STA $434
+STA $450
+STA $452
+STA $454
+STA $470
+STA $473
+STA $490
+STA $474
+STA $494
+BRK
+
